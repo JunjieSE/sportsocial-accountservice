@@ -1,6 +1,7 @@
 package com.junjie.userservice.accounts.controller;
 
 import com.junjie.userservice.accounts.model.dto.ChangeUsernameRequest;
+import com.junjie.userservice.accounts.model.dto.UserDeleteRequest;
 import com.junjie.userservice.accounts.model.dto.UpdateUsernameGoToTweetMicro;
 import com.junjie.userservice.accounts.model.dto.UserRegistrationRequest;
 import com.junjie.userservice.accounts.model.Users;
@@ -80,4 +81,20 @@ public class AccountsController {
         }
 
     }
+
+    @DeleteMapping("/delete/user")
+    public ResponseEntity<String> deleteUser(@RequestBody UserDeleteRequest request){
+
+            Users user = userService.deleteUser(request);
+
+            return ResponseEntity.status(HttpStatus.CREATED).body("user deleted: " + user.getUsername());
+    }
+
+    //for developer
+//    @DeleteMapping("/delete/{username}")
+//    public ResponseEntity<String> deleteInvalid(@PathVariable String username){
+//
+//        Integer deletedCount = userService.deleteUsersWithInvalidUsername(username);
+//        return ResponseEntity.status(HttpStatus.CREATED).body(deletedCount + " users deleted.");
+//    }
 }

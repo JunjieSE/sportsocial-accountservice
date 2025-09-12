@@ -1,6 +1,7 @@
 package com.junjie.userservice.accounts.service;
 
 import com.junjie.userservice.accounts.model.Users;
+import com.junjie.userservice.accounts.model.dto.UserDeleteRequest;
 import com.junjie.userservice.accounts.model.dto.UserRegistrationRequest;
 import com.junjie.userservice.accounts.repo.UsersRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -74,4 +75,27 @@ public class UserService {
         Users user = repo.findByUsername(username);
         return  user;
     }
+
+    public Users deleteUser(UserDeleteRequest request) {
+
+        Users user = repo.findByUsername(request.getUsername());
+        if(user == null){
+            return null;
+        }
+
+        repo.delete(user);
+        return user;
+    }
+
+    //for developer
+//    public Integer deleteUsersWithInvalidUsername(String username) {
+//        Integer count = 0;
+//        for (Users user: repo.findAll()){
+//            if(user.getUsername().equals(username)){
+//                repo.delete(user);
+//                count++;
+//            }
+//        }
+//        return count;
+//    }
 }
