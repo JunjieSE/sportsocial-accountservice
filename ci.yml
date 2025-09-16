@@ -1,5 +1,11 @@
 name: CI Pipeline
 
+# Trigger the workflow
+on:
+  push:
+    branches: [ main, dev ]   # runs on pushes to main or dev
+  pull_request:
+    branches: [ main, dev ]   # runs on PRs
 
 jobs:
   build:
