@@ -1,7 +1,7 @@
 package com.junjie.userservice.accounts.controller;
 
 import com.junjie.userservice.accounts.model.Users;
-import com.junjie.userservice.accounts.service.RabbitMQSender;
+//import com.junjie.userservice.accounts.service.RabbitMQSender;
 import com.junjie.userservice.accounts.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,8 +29,8 @@ class AccountsControllerTest {
     @MockitoBean
     private UserService userService;
 
-    @MockitoBean
-    private RabbitMQSender rabbitMQSender;
+//    @MockitoBean
+//    private RabbitMQSender rabbitMQSender;
 
     @Test
     @WithMockUser(username = "admin", roles = {"USER"}) // Simulate authentication
